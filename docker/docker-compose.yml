@@ -1,0 +1,18 @@
+database:
+  image: mysql/mysql-server:5.7
+  restart: unless-stopped
+  container_name: database.dev
+  command: mysqld --user=root --verbose
+  volumes:
+    - ./tmp/initialization.sql:/tmp/initialization.sql
+    - ./tmp/shutdown.sh:/tmp/shutdown.sh
+    - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+  ports:
+    - "3306:3306"
+  environment:
+    MYSQL_DATABASE: "example"
+    MYSQL_USER: "example_user"
+    MYSQL_PASSWORD: "abc123"
+    MYSQL_ROOT_PASSWORD: "abc123"
+    MYSQL_ALLOW_EMPTY_PASSWORD: "no"
+    MYSQL_ROOT_HOST: "%"

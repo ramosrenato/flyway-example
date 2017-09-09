@@ -1,0 +1,71 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.renatoramos</groupId>
+  <artifactId>flyway-example</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>flyway-example</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <flyway.version>4.2.0</flyway.version>
+    <mysql.driver.version>5.1.13</mysql.driver.version>
+    <database.driver>com.mysql.jdbc.Driver</database.driver>
+    <database.url>jdbc:mysql://localhost:3306/example?autoreconnect=true</database.url>
+    <database.username>root</database.username>
+    <database.password>abc123</database.password>
+  </properties>
+
+  <dependencies>
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.flywaydb</groupId>
+      <artifactId>flyway-core</artifactId>
+      <version>${flyway.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>${mysql.driver.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+
+        <groupId>org.flywaydb</groupId>
+        <artifactId>flyway-maven-plugin</artifactId>
+        <version>${flyway.version}</version>
+
+        <!--configuration>
+          <driver>${database.driver}</driver>
+          <url>${database.url}</url>
+          <user>${database.username}</user>
+          <password>${database.password}</password>
+          <schemas>
+            <schema>example</schema>
+          </schemas>
+          <encoding>UTF-8</encoding>
+          <cleanOnValidationError>true</cleanOnValidationError>
+        </configuration-->
+
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
